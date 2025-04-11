@@ -10,6 +10,8 @@ function palavraPalindromo() {
 
     if (palavra === "" || !isNaN(palavra) ) {
         alert("Por favor, digite uma palavra válida!")
+
+        return;
     }
 
     if(palavra === palavraInvertida) {
