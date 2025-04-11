@@ -1,18 +1,21 @@
-palavraPalindromo();
-
 function palavraPalindromo() {
-    let palavra = prompt("Digite a palavra:");
-    let separandoAsLetras = palavra.split(""); // .split vai separar as palavras, para fazer a verificação em seguida.
-    let palavraInvertida = separandoAsLetras.reverse(); //.reverse vai inverter a palavra depois que ela foi separada.
-    palavraInvertida = palavraInvertida.join(""); // .join vai juntar as palavras depois que foi separada e invertida.
+    let palavraDigitada = document.getElementById('palavra').value;
+    if (palavraDigitada.includes(' ')) {
+        alert('Por favor, digite apenas uma palavra, sem espaços.')
+    }
+    let palavra = palavraDigitada.toLowerCase().replace(/\s/g, "");
+    let separandoAsLetras = palavraDigitada.split("");
+    let palavraInvertida = separandoAsLetras.reverse().join("");
+    let resultado = document.getElementById('resultado');
 
-        if(!palavra){ //!palavra verifica se é uma string vazia ou undefined.
-            alert("Por favor, digite uma palavra.");
-        } else if(/[^a-zA-Z]/.test(palavra)) { // /[^a-zA-Z]/ vai permitir ao usuário digitar apenas palavras, o .test(palavra) vai retornar true caso haja números/caracteres especiais.
-            alert("Por favor, digite apenas palavras.");
-        } else if(palavra == palavraInvertida) {
-            alert(`A palavra ${palavra} é um Palíndromo.`);
-        } else {
-            alert(`A palavra ${palavra} não é um Palíndromo.`);
-        }
+    if (palavra === "" || !isNaN(palavra) ) {
+        alert("Por favor, digite uma palavra válida!")
+    }
+
+    if(palavra === palavraInvertida) {
+        resultado.innerHTML = `
+        A palavra <span class="palavra__digitada">${palavraDigitada}</span> alterou-se para <span class="palavra__palindromo">${palavraInvertida}</span> e portanto é um Palíndromo.`
+    } else {
+        resultado.innerHTML = `A palavra <span class="palavra__digitada">${palavraDigitada}</span> alterou-se para <span class="palavra__nao__palindromo">${palavraInvertida} </span>e portanto não é um Palíndromo.`
+    }
 }
