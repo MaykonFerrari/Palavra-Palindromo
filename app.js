@@ -2,6 +2,8 @@ function palavraPalindromo() {
     let palavraDigitada = document.getElementById('palavra').value;
     if (palavraDigitada.includes(' ')) {
         alert('Por favor, digite apenas uma palavra, sem espaços.')
+
+        return;
     }
     let palavra = palavraDigitada.toLowerCase().replace(/\s/g, "");
     let separandoAsLetras = palavraDigitada.split("");
