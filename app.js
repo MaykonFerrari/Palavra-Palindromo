@@ -1,18 +1,12 @@
 function palavraPalindromo() {
     let palavraDigitada = document.getElementById('palavra').value;
-    if (palavraDigitada.includes(' ')) {
-        alert('Por favor, digite apenas uma palavra, sem espaços.')
 
-        return;
-    }
     let palavra = palavraDigitada.toLowerCase().replace(/\s/g, "");
-    let separandoAsLetras = palavraDigitada.split("");
-    let palavraInvertida = separandoAsLetras.reverse().join("");
+    let palavraInvertida = palavra.split("").reverse().join("");
     let resultado = document.getElementById('resultado');
 
     if (palavra === "" || !isNaN(palavra) ) {
         alert("Por favor, digite uma palavra válida!")
-
         return;
     }
 
